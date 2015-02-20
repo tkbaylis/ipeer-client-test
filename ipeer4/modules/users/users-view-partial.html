@@ -1,0 +1,17 @@
+<div ng-controller='UsersViewController'>   
+
+<div class="row" id="header"> 
+<h1>User Profile - View</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+<div class="row" id="userViewPanel" ng-show="userProfile.show">
+    <table class="userViewProfile">
+        <tr><td><label id="fullname_label">Name:</label></td>
+            <td><span id="fullname">{{ user.first_name }} {{ user.last_name }}</span></td></tr>
+        <tr><td><label id="email_label">Email:</label></td>
+            <td><span id="email">{{ user.email }}</span></td></tr>
+    </table>
+</div>
+
+</div>

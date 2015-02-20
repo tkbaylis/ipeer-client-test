@@ -1,0 +1,31 @@
+<div ng-controller='UsersViewAdminController'>   
+
+<div class="row" id="header"> 
+<h1>User Profile - View All</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+    
+<div class="row" id="usersViewPanel">
+    <table class="table table-hover" id="usersList">
+        <thead>
+        <tr><th><a href="" ng-click="orderByField='last_name'; reverseSort = !reverseSort"><label id="lastname_label">Last Name</label></a></th>
+            <th><a href="" ng-click="orderByField='first_name'; reverseSort = !reverseSort"><label id="firstname_label">First Name</label></a></th>
+            <th><a href="" ng-click="orderByField='email'; reverseSort = !reverseSort"><label id="email_label">Email</label></a></th></tr>
+        </thead>
+        <tbody ng-repeat="user in users|orderBy:orderByField:reverseSort">
+        <tr><td><span id="lastname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{user.id}}">
+            {{ user.last_name }}
+            </a>
+            </span></td>
+            <td><span id="firstname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{user.id}}">
+            {{ user.first_name }}
+            </a>
+            </span></td>
+            <td><span id="email">{{ user.email }}</span></td></tr>
+        </tbody>
+    </table>
+</div>
+
+</div>

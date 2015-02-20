@@ -1,0 +1,46 @@
+<div ng-controller="HomeController">    
+ 
+<div class="row" id="header">   
+<h1>Home Page</h1>
+<p>Welcome to the iPeer4 test client. Below are some (temporary) examples.</p>
+</div> 
+    
+<!-- Below are some hard-coded quick examples. Replace with real Home Page later -->    
+<div class="row" id="examples">
+    <table class="table table-bordered" id="examplesList">
+    <thead>
+        <tr><th></th>
+        <th>View</th>
+        <th>View All</th>
+        <th>Edit/Delete</th>
+        <th>Create</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td class="header-col">User</td>
+        <td><p>View <a href="#/users/1">user 1</a></p>
+            <p>View <a href="#/users/2">user 2</a></p>
+            <p>View <a href="#/users/9999">user 9999</a><br/>(does not exist)</p></td>
+        <td><p>View <a href="#/users">all users</a></p></td>
+        <td><p>Edit <a href="#/users/1/edit">user 1</a></p>
+            <p>Edit <a href="#/users/2/edit">user 2</a></p>
+            <p>Edit <a href="#/users/9999/edit">user 9999</a><br/>(does not exist)</p></td>
+        <td><p>Create <a href="#/users/create">new user</a></p></td>
+        </tr>
+            
+        <tr>
+        <td class="header-col">Course</td>
+        <td><p>View <a href="#/courses/1">course 1</a></p>
+            <p>View <a href="#/courses/9999">course 9999</a><br/>(does not exist)</p></td>
+        <td><p>View <a href="#/courses">all courses</a></p></td>
+        <td><p>Edit <a href="#/courses/1/edit">course 1</a></p>
+            <p>Edit <a href="#/courses/9999/edit">course 9999</a><br/>(does not exist)</p></td>
+        <td><p>Create <a href="#/courses/create">new course</a></p></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+<!-- End of temporary examples -->
+
+</div>

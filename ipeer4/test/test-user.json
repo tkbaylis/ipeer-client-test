@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "role_id": 2,
+        "enrollments": [
+            {
+                "course_id": "APSC 201",
+                "role_id": 1
+            },
+            {
+                "course_id": "MECH 100",
+                "role_id": 1
+            }
+        ],
+        "profile": [
+            {
+                "last_name": "Instructor",
+                "first_name": "Cool",
+                "password": "ipeeripeer",
+                "email": "abc123@ubc.ca"
+            }
+        ]
+    }
+]

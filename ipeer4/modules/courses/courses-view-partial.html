@@ -1,0 +1,17 @@
+<div ng-controller='CoursesViewController'>   
+
+<div class="row" id="header"> 
+<h1>Course - View</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+<div class="row" id="courseViewPanel" ng-show="courseProfile.show">
+    <table class="courseView">
+        <tr><td><label id="coursename_label">Course Name:</label></td>
+            <td><span id="name">{{ course.name }}</span></td></tr>
+        <tr><td><label id="term_label">Term:</label></td>
+            <td><span id="term">2014W2</span></td></tr>
+    </table>
+</div>
+
+</div>
