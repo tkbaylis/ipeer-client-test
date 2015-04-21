@@ -3,7 +3,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('ipeer4', ['ngRoute', 'ngResource', 'ubc.ctlt.ipeer4.home', 'ubc.ctlt.ipeer4.users', 'ubc.ctlt.ipeer4.courses']);
+    var app = angular.module('ipeer4', ['ngRoute', 'ngResource', 'ubc.ctlt.ipeer4.home', 'ubc.ctlt.ipeer4.users', 'ubc.ctlt.ipeer4.courses', 'ubc.ctlt.ipeer4.enrollments']);
     
     app.config(['$routeProvider',
         function ($routeProvider) {
@@ -27,6 +27,14 @@
                 when('/courses/:id/edit', {
                     templateUrl: '../ipeer4/modules/courses/courses-edit-partial.html',
                     label: "Edit Course"
+                }).
+                when('/courses/:id/enrollments', {
+                    templateUrl: '../ipeer4/modules/enrollments/enrollments-view-partial.html',
+                    label: "View Course Enrollments"
+                }).
+                when('/courses/:id/enrollments/manage', {
+                    templateUrl: '../ipeer4/modules/enrollments/enrollments-manage-partial.html',
+                    label: "Manage Course Enrollments"
                 }).
                 when('/users/', {
                     templateUrl: '../ipeer4/modules/users/users-view-all-partial.html',

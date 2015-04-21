@@ -1,0 +1,90 @@
+<div>
+<div class="row" id="header"> 
+<h1>Course Enrollments - Manage</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+    
+<div>&nbsp;</div>
+    
+<div ng-controller='EnrollmentsCreateController' class="row" id="enrollmentsCreatePanel">
+<h2>Add existing User to this course:</h2>
+    <p><em>Currently only able to add by user ID until server Search functionality is implemented.</em></p>
+<form class="form-horizontal" role="form"  id="enrollmentsCreateForm">
+
+    <div class="form-group">    
+        <label class="control-label col-sm-2" for="user_id" id="userid_label">User Id:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="userId" ng-model="userId">
+    </div></div>
+    
+    <div class="form-group">    
+        <label class="control-label col-sm-2" for="course_role" id="name_label">Course role:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="courseRole" ng-model="courseRole.course_role">
+                <option value="" disabled selected>Select user role</option>
+                <option value="0">Student</option>
+                <option value="1">Tutor</option>
+                <option value="2">Instructor</option>
+            </select>
+    </div></div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="submit" ng-click="createEnrollment()">Save</button>
+            <button type="submit" id="cancel" ng-click="cancel()">Cancel</button>
+    </div></div>
+</form>
+</div>
+    
+<div>&nbsp;</div>
+
+    
+    
+<div ng-controller='EnrollmentsManageController' id="enrollmentsViewPanel">
+<h2>Manage Enrollments</h2>
+<div><center>
+
+<button type="submit" id="submitAll" ng-click="editAllEnrollments()">Save</button>
+<button type="submit" id="cancelAll" ng-click="cancel()">Cancel</button>
+
+</center></div>
+<table class="table table-hover" id="enrollmentsList">
+    
+    <thead>
+        <tr><th><a href="" ng-click="orderByField='user.last_name'; reverseSort = !reverseSort"><label id="lastname_label">Last Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.first_name'; reverseSort = !reverseSort"><label id="firstname_label">First Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.email'; reverseSort = !reverseSort"><label id="email_label">Email</label></a></th>
+            <th><a href="" ng-click="orderByField='course_role'; reverseSort = !reverseSort"><label id="role_label">Role</label></a></th>
+            <th><label>Remove</label></th>
+        </tr>
+    </thead>
+
+    <tbody ng-repeat="enrollment in enrollments|orderBy:orderByField:reverseSort">
+        <tr><td><span id="lastname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            {{ enrollment.user.last_name }}
+            </a>
+            </span></td>
+            <td><span id="firstname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            {{ enrollment.user.first_name }}
+            </a>
+            </span></td>
+            <td><span id="email">{{ enrollment.user.email }}</span></td>
+            <td>
+            <form class="form-horizontal" role="form" id="enrollmentEditForm">
+            <select id="courseRole" class="form-control" ng-model="enrollment.course_role">
+                <option value="0" ng-selected="enrollment.course_role == 0">Student</option>
+                <option value="1" ng-selected="enrollment.course_role == 1">Tutor</option>
+                <option value="2" ng-selected="enrollment.course_role == 2">Instructor</option>
+            </select>
+            <button type="submit" id="saveEnrollment" ng-click="editEnrollment(enrollment.user.id, enrollment.course_role)">Save</button>
+            </form>
+            </td>
+            <td><button type="submit" id="removeEnrollment" ng-click="deleteEnrollment(enrollment.user.id)">X</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>

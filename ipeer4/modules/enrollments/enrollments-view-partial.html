@@ -1,0 +1,54 @@
+<div ng-controller='EnrollmentsViewController'>
+    
+<div class="row" id="header">
+<h1>Course Enrollments - View</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>  
+
+<div class="row" id="enrollmentsViewPanel">
+<!--
+    {{ course }}
+    <br/><br/>
+    {{ enrollments }}
+    -->
+
+    <table class="table table-hover" id="enrollmentsList">
+    
+    <thead>
+        <tr><th><a href="" ng-click="orderByField='user.last_name'; reverseSort = !reverseSort"><label id="lastname_label">Last Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.first_name'; reverseSort = !reverseSort"><label id="firstname_label">First Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.email'; reverseSort = !reverseSort"><label id="email_label">Email</label></a></th>
+            <th><a href="" ng-click="orderByField='course_role'; reverseSort = !reverseSort"><label id="role_label">Role</label></a></th></tr>
+    </thead>
+    
+    
+    
+    <tbody ng-repeat="enrollment in enrollments|orderBy:orderByField:reverseSort">
+        <tr><td><span id="lastname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            {{ enrollment.user.last_name }}
+            </a>
+            </span></td>
+            <td><span id="firstname">
+            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            {{ enrollment.user.first_name }}
+            </a>
+            </span></td>
+            <td><span id="email">{{ enrollment.user.email }}</span></td>
+            <td><span id="courserole0" ng-if="enrollment.course_role == 0">
+                Student
+                </span>
+                <span id="courserole1" ng-if="enrollment.course_role == 1">
+                Tutor
+                </span>
+                <span id="courserole2" ng-if="enrollment.course_role == 2">
+                Instructor
+                </span></td></tr>
+        </tbody>
+    
+    
+    </table>
+
+</div>    
+
+</div>

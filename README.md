@@ -21,12 +21,14 @@ Run the client at http://localhost:8888 using
 python SimpleServer.py
 ```
 
-Run the backend prototype. It is configured to run at http://localhost:8000 and to accept requests from this frontend client. This requires a MySQL database.  
+Run the backend prototype. It is configured to run at http://localhost:8000 and to accept requests from this frontend client. The API is located at http://localhost:8000/api/doc/. This requires a MySQL database.
 
 
 ## Build & Development
 
 Choose any web developer tool(s)/IDE. I use Adobe Brackets.
+
+Postman is a REST client Chrome plugin (http://goo.gl/t1bLJP) that will make requests to the local server/help debug.
 
 We encourage test-driven development for this project.
 
