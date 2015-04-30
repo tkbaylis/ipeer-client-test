@@ -3,12 +3,11 @@
 (function () {
     'use strict';
 
-//var module = angular.module('ubc.ctlt.ipeer4.enrollments', ['ngResource', 'ubc.ctlt.ipeer4.users']);
-    var module = angular.module('ubc.ctlt.ipeer4.enrollments', ['ngResource', 'ubc.ctlt.ipeer4.users', 'ubc.ctlt.ipeer4.courses']);
+var module = angular.module('ubc.ctlt.ipeer4.enrollments', ['ngResource']);
     
 /** Providers **/
 module.factory('EnrollmentsResource', ['$resource', function($resource) {
-    var Enrollments = $resource('http://localhost:8000/api/courses/:id/enrollments', {id: '@id'});
+    var Enrollments = $resource('http://localhost:8000/api/courses/:courseId/enrollments', {courseId: '@courseId'});
     return Enrollments;
 }]);
 
@@ -17,30 +16,11 @@ module.factory('EnrollmentsManageResource', ['$resource', function($resource) {
     return Enrollments;
 }]);
     
-/** Controllers **/
-module.controller('EnrollmentsViewController', function ($scope, $location, $routeParams, EnrollmentsResource, Toaster)
-{
-    var courseId = $routeParams['id'];
-    $scope.course = {};
-    $scope.enrollments = [];
-    
-    EnrollmentsResource.get({"id":courseId}).$promise.then(
-        function (ret) {
-            $scope.course = ret;
-            $scope.enrollments = $scope.course.enrollments;
-        },
-        function (ret) {
-            Toaster.error('Course not retrieve list of enrollments.');
-            $location.path('/');
-        }
-    );
-});
-    
-    
+/** Controllers **/ 
 module.controller('EnrollmentsCreateController', function ($scope, $location, $route, $routeParams, EnrollmentsManageResource, Toaster) {
-    var courseId = $routeParams['id'];
-    $scope.userId; // Gimli = 30
-    $scope.courseRole; // instructor = 2
+    var courseId = $routeParams['courseId'];
+    $scope.userId;
+    $scope.courseRole;
     
     $scope.cancel = function () {
         $route.reload();
@@ -62,18 +42,23 @@ module.controller('EnrollmentsCreateController', function ($scope, $location, $r
 
     
 module.controller('EnrollmentsManageController', function ($scope, $location, $route, $routeParams, EnrollmentsResource, EnrollmentsManageResource, Toaster) {
-    var courseId = $routeParams['id'];
+    var courseId = $routeParams['courseId'];
     $scope.course = {};
     $scope.enrollments = [];
-//    $scope.courseRole; // instructor = 2
+    $scope.noEnrollments = true;
+    $scope.showEnrollments = false;
     
-    EnrollmentsResource.get({"id":courseId}).$promise.then(
+    EnrollmentsResource.get({"courseId":courseId}).$promise.then(
         function (ret) {
             $scope.course = ret;
             $scope.enrollments = $scope.course.enrollments;
+            $scope.showEnrollments = !$scope.showEnrollments;
+            if (!($scope.enrollments.length == 0)) {
+                $scope.noEnrollments = !$scope.noEnrollments;
+            }
         },
         function (ret) {
-            Toaster.error('Course not retrieve list of enrollments.');
+            Toaster.error('No course found for that ID.');
             $location.path('/');
         }
     );
@@ -114,5 +99,31 @@ module.controller('EnrollmentsManageController', function ($scope, $location, $r
         );
     };
 });
+  
     
+module.controller('EnrollmentsViewController', function ($scope, $location, $routeParams, EnrollmentsResource, Toaster)
+{
+    var courseId = $routeParams['courseId'];
+    $scope.course = {};
+    $scope.enrollments = [];
+    $scope.noEnrollments = true;
+    $scope.showEnrollments = false;
+    
+    EnrollmentsResource.get({"courseId":courseId}).$promise.then(
+        function (ret) {
+            $scope.course = ret;
+            $scope.enrollments = $scope.course.enrollments;        
+            $scope.showEnrollments = !$scope.showEnrollments;
+            if (!($scope.enrollments.length == 0)) {
+                $scope.noEnrollments = !$scope.noEnrollments;
+            }
+        },
+        function (ret) {
+            Toaster.error('No course found for that ID.');
+            $location.path('/');
+        }
+    );
+});
+    
+// End anonymous function
 }());

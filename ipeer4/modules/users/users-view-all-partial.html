@@ -1,8 +1,9 @@
-<div ng-controller='UsersViewAdminController'>   
-
+<div ng-controller="UsersViewAllController">   
+<div ng-if="showUsers">
+    
 <div class="row" id="header"> 
 <h1>User Profile - View All</h1>
-<p>Return to <a href="#/">home page</a></p>
+<p>Return to <a href="/ipeer4/#/">home page</a></p>
 </div>
     
 <div class="row" id="usersViewPanel">
@@ -14,18 +15,15 @@
         </thead>
         <tbody ng-repeat="user in users|orderBy:orderByField:reverseSort">
         <tr><td><span id="lastname">
-            <a ng-href="http://localhost:8888/ipeer4/#/user/{{user.id}}">
-            {{ user.last_name }}
-            </a>
+            <a ng-href="/ipeer4/#/users/{{user.id}}">{{ user.last_name }}</a>
             </span></td>
             <td><span id="firstname">
-            <a ng-href="http://localhost:8888/ipeer4/#/user/{{user.id}}">
-            {{ user.first_name }}
-            </a>
+            <a ng-href="/ipeer4/#/users/{{user.id}}">{{ user.first_name }}</a>
             </span></td>
             <td><span id="email">{{ user.email }}</span></td></tr>
         </tbody>
     </table>
 </div>
 
+</div>
 </div>

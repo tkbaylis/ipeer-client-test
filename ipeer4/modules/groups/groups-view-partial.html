@@ -1,0 +1,44 @@
+<div>
+<div class="row" id="header"> 
+<h1>Course Groups - View Group</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+
+<div ng-controller="GroupsViewController" class="row" id="groupsViewPanel">
+<div ng-if="showName">
+<h2>{{courseName}}</h2>
+<h3>Group {{group.id}}: {{group.name}}</h3> 
+    
+<div class="editGroupsButton">
+    <div style="text-align:center;">
+        <a ng-href="http://localhost:8888/ipeer4/#/courses/{{courseId}}/groups/{{groupId}}/edit">
+    <button>Edit this Group</button>
+        </a>
+    </div>
+</div>
+    
+<table class="table table-hover" id="groupMembersList">
+<thead>
+    <tr>
+    <th><a href="" ng-click="orderByField='user.last_name'; reverseSort = !reverseSort"><label id="lastname_label">Last Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.first_name'; reverseSort = !reverseSort"><label id="firstname_label">First Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.email'; reverseSort = !reverseSort"><label id="email_label">Email</label></a></th>
+    </tr>
+</thead>
+    
+<tbody ng-repeat="member in members|orderBy:orderByField:reverseSort">
+<tr>
+    <td><span id="lastname"><a ng-href="http://localhost:8888/ipeer4/#/users/{{member.user.id}}">{{ member.user.last_name }}</a></span></td>
+    <td><span id="firstname"><a ng-href="http://localhost:8888/ipeer4/#/users/{{member.user.id}}">{{ member.user.first_name }}</a></span></td>
+    <td><span id="email">{{ member.user.email }}</span></td>
+</tr>
+</tbody>    
+    
+</table>    
+</div>    
+    </div>
+
+
+
+</div>

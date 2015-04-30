@@ -7,5 +7,6 @@
     
     module.controller('HomeController', ['$scope', '$http', function ($scope, $http) {
     }]);
-    
+
+// End anonymous function
 }());

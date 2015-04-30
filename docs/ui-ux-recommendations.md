@@ -126,7 +126,7 @@ by UBC CTLT
 
 * __Links to All__: Remove or move links to all below each table
 
-* __Add Simple Evaluation Form__: Explain Points Per Member?
+* __Add Simple Evaluation Form__: Explain Points Per Member?  **Requested by Sauder:** a pie chart displays student's allocations of total points between their peers.
 
 * __Add Rubrics Form__: Does everyone understand Level of Mastery? Change Zero Mark to radio buttons with “Level 1 = 1 mark” and “Level 1 = 0 marks”, View Mode -> Rubric Layout, Criteria -> Evaluate Users Side-By-Side, Student -> Evaluate Users One At A Time; indicate what is needed for each text box (labels are generic or missing)
 

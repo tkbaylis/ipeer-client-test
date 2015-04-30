@@ -1,0 +1,31 @@
+<div>
+<div class="row" id="header"> 
+<h1>Course Groups - Create New</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+<div>&nbsp;</div>
+    
+<p><em>Currently need to create group before adding members.</em></p>
+    
+<div>&nbsp;</div>
+    
+<div ng-controller='GroupsCreateController' class="row" id="groupssCreatePanel">
+<form class="form-horizontal" role="form"  id="enrollmentsCreateForm">
+
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="group_name" id="groupname_label">Group Name:</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" id="groupName" ng-model="group.name">    
+    </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="submit" ng-click="createGroup()">Save</button>
+            <button type="submit" id="cancel" ng-click="cancel()">Cancel</button>
+    </div></div>
+</form>
+</div>
+
+</div>

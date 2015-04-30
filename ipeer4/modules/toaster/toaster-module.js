@@ -49,5 +49,6 @@
 	};
 	return toaster;
 });
-    
+
+// End anonymous function
 }());

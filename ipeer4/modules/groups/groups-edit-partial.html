@@ -1,0 +1,88 @@
+<div>
+<div class="row" id="header"> 
+<h1>Course Groups - Edit Group (one course)</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+<div>&nbsp;</div>
+
+ <div ng-controller="GroupsEditController">
+    
+<p><em>User must be enrolled in course and in a student/tutor course role in order to join an existing group.</em></p>
+ 
+  <div ng-if="showMembers">   
+    <h2>{{courseName}}</h2>
+<h3>Group {{group.id}}: {{ group.name }}</h3> 
+
+<div style="text-align:center;"><button id="deleteGroup" ng-click="deleteGroup()">Delete Group</button></div>
+      
+<div>&nbsp;</div>
+
+<div class="row" id="groupsEditPanel">
+<form class="form-horizontal" role="form"  id="groupsEditForm">
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="group_name" id="groupname_label">Group Name:</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" id="groupName" ng-model="group.name">    
+    </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" id="submit" ng-click="editGroup()">Save</button>
+            <button type="submit" id="cancel" ng-click="cancel()">Cancel</button>
+    </div></div>
+</form>
+</div>     
+      
+      
+<div id="enrollmentsViewPanel">
+    <table class="table table-hover" id="enrollmentsList">
+    <thead>
+        <tr><th><a href="" ng-click="orderByField='user.last_name'; reverseSort = !reverseSort"><label id="lastname_label">Last Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.first_name'; reverseSort = !reverseSort"><label id="firstname_label">First Name</label></a></th>
+            <th><a href="" ng-click="orderByField='user.email'; reverseSort = !reverseSort"><label id="email_label">Email</label></a></th>
+            <th><a href="" ng-click="orderByField='course_role'; reverseSort = !reverseSort"><label id="role_label">Role</label></a></th></tr>
+    </thead>
+    <tbody ng-repeat="enrollment in enrollments|orderBy:orderByField:reverseSort">
+        <tr><td><span id="lastname">
+            <a ng-href="http://localhost:8888/ipeer4/#/users/{{enrollment.user.id}}">{{ enrollment.user.last_name }}
+            </a>
+            </span></td>
+            <td><span id="firstname">
+            <a ng-href="http://localhost:8888/ipeer4/#/users/{{enrollment.user.id}}">
+            {{ enrollment.user.first_name }}
+            </a>
+            </span></td>
+            <td><span id="email">{{ enrollment.user.email }}</span></td>
+            <td><span id="courserole0" ng-if="enrollment.course_role == 0">
+                Student
+                </span>
+                <span id="courserole1" ng-if="enrollment.course_role == 1">
+                Tutor
+                </span>
+                <span id="courserole2" ng-if="enrollment.course_role == 2">
+                Instructor
+                </span></td></tr>
+        </tbody>
+    </table>
+</div> 
+</div>    
+ </div>   
+    
+<!--    
+<div>
+<div ng-controller='GroupsEditController'>
+    <center><label>Select (First) Group Member</label></center>
+    
+    <div class="form-group">    
+        <label class="control-label col-sm-2" for="user_id" id="userid_label">User Id:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="userId" ng-model="group.members.userId">
+    </div></div>    
+</div>
+</div>
+-->    
+    
+    
+    
+</div>

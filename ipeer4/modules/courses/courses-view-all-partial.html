@@ -1,13 +1,13 @@
-<div ng-controller='CoursesViewAdminController'>
+<div ng-controller='CoursesViewAllController'>
 
 <div class="row" id="header">
 <h1>Courses - View All</h1>
-<p>Return to <a href="#/">home page</a></p>
+<p>Return to <a href="/ipeer4/#/">home page</a></p>
 </div>
     
     
 <div class="row" id="coursesViewPanel">
-    <table class="table table-hover" id="coursesList">
+    <table class="table table-hover" id="coursesList" ng-if="showCourses">
         <thead>
             <tr><th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort"><label id="coursename_label">Course</label></a></th>
             <th><label id="term_label">Term</label></th>
@@ -18,12 +18,10 @@
         </thead>
         <tbody ng-repeat="course in courses|orderBy:orderByField:reverseSort">
         <tr><td><span id="coursename">
-            <a ng-href="http://localhost:8888/ipeer/#/courses/{{course.id}}">
-            {{course.name}}
-            </a>
+            <a ng-href="/ipeer4/#/courses/{{course.id}}">{{course.name}}</a>
             </span></td>
             <td><span id="term">
-            2014W2
+            2014W2 <!-- hard-coded placeholder) -->
             </span></td>
 
             <!-- Other field names (TBD)-->

@@ -1,17 +1,20 @@
-<div ng-controller='UsersViewController'>   
-
+<div ng-controller="UsersViewController">
+<div ng-show="userProfile.show">  
+    
 <div class="row" id="header"> 
 <h1>User Profile - View</h1>
-<p>Return to <a href="#/">home page</a></p>
+<p>Return to <a href="/ipeer4/#/">home page</a></p>
 </div>
 
-<div class="row" id="userViewPanel" ng-show="userProfile.show">
+<div class="row" id="userViewPanel">
     <table class="userViewProfile">
         <tr><td><label id="fullname_label">Name:</label></td>
             <td><span id="fullname">{{ user.first_name }} {{ user.last_name }}</span></td></tr>
         <tr><td><label id="email_label">Email:</label></td>
             <td><span id="email">{{ user.email }}</span></td></tr>
     </table>
+    <div style="text-align:center;"><a ng-href="/ipeer4/#/users/{{user.id}}/edit"><button>Edit User</button></a></div>
 </div>
 
+</div>
 </div>

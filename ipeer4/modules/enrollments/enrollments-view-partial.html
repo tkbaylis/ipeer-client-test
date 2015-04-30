@@ -1,4 +1,5 @@
 <div ng-controller='EnrollmentsViewController'>
+<div ng-if="showEnrollments">
     
 <div class="row" id="header">
 <h1>Course Enrollments - View</h1>
@@ -6,12 +7,12 @@
 </div>  
 
 <div class="row" id="enrollmentsViewPanel">
-<!--
-    {{ course }}
-    <br/><br/>
-    {{ enrollments }}
-    -->
+    <h2 id="courseName">Enrollments for {{course.course.name}}</h2>
 
+    <p id="noEnrollmentsLabel" ng-if="noEnrollments" style="text-align:center"><em>This course has no enrollments.</em></p>
+    
+    <div style="text-align:center;"><a ng-href="/ipeer4/#/courses/{{course.course.id}}/enrollments/manage"><button>Manage Enrollments</button></a></div>
+    
     <table class="table table-hover" id="enrollmentsList">
     
     <thead>
@@ -25,12 +26,12 @@
     
     <tbody ng-repeat="enrollment in enrollments|orderBy:orderByField:reverseSort">
         <tr><td><span id="lastname">
-            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            <a ng-href="/ipeer4/#/users/{{enrollment.user.id}}"> <!-- Not linking to user page -->
             {{ enrollment.user.last_name }}
             </a>
             </span></td>
             <td><span id="firstname">
-            <a ng-href="http://localhost:8888/ipeer4/#/user/{{enrollment.user.id}}">
+            <a ng-href="/ipeer4/#/users/{{enrollment.user.id}}">
             {{ enrollment.user.first_name }}
             </a>
             </span></td>
@@ -50,5 +51,5 @@
     </table>
 
 </div>    
-
+</div>
 </div>

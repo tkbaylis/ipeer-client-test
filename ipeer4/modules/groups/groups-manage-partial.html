@@ -1,0 +1,37 @@
+<div>
+<div class="row" id="header"> 
+<h1>Course Groups - Manage All</h1>
+<p>Return to <a href="#/">home page</a></p>
+</div>
+
+    
+<div ng-controller="GroupsManageAllController" class="row" id="groupsViewAllPanel">
+<div class="createGroupsButton" ng-if="showGroups">
+    <center>
+        <a ng-href="http://localhost:8888/ipeer4/#/courses/{{courseId}}/groups/create">
+    <button>Create New Group</button>
+        </a>
+    </center>
+</div>
+    
+<div class="manageGroupsPanel" ng-if="showGroups">
+    <h2>Manage Groups for {{courseName}}</h2>
+<table class="table table-hover" id="groupsList">
+<thead>
+    <tr><th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort"><label id="groupid_label">Group ID</label></a></th>
+    <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort"><label id="groupname_label">Group Name</label></a></th></tr>
+</thead>
+<tbody ng-repeat="group in groups|orderBy:orderByField:reverseSort">
+    <tr><td><span id="id">
+        <a ng-href="http://localhost:8888/ipeer4/#/courses/{{courseId}}/groups/{{group.id}}">{{ group.id }}</a>
+        </span></td>
+    <td><span id="name">
+        <a ng-href="http://localhost:8888/ipeer4/#/courses/{{courseId}}/groups/{{group.id}}">{{ group.name }}</a>
+        </span></td></tr>
+</tbody>      
+</table>    
+</div>
+</div>
+
+    
+</div>

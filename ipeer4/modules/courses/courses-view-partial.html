@@ -2,7 +2,7 @@
 
 <div class="row" id="header"> 
 <h1>Course - View</h1>
-<p>Return to <a href="#/">home page</a></p>
+<p>Return to <a href="/ipeer4/#/">home page</a></p>
 </div>
 
 <div class="row" id="courseViewPanel" ng-show="courseProfile.show">
@@ -10,8 +10,9 @@
         <tr><td><label id="coursename_label">Course Name:</label></td>
             <td><span id="name">{{ course.name }}</span></td></tr>
         <tr><td><label id="term_label">Term:</label></td>
-            <td><span id="term">2014W2</span></td></tr>
+            <td><span id="term">2014W2 <!-- (hard-coded placeholder) --></span></td></tr>
     </table>
+    <div style="text-align:center;"><a ng-href="/ipeer4/#/courses/{{course.id}}/edit"><button>Edit Course</button></a></div>
 </div>
 
 </div>
